@@ -7,8 +7,9 @@ CHECKOUT
 @section('content')
 
 <div class="container mt-3">
-    <form action="{{ url('place-order') }}" method="POST">
-        {{ csrf_field() }}
+    <form action="{{ url('place-order') }}" method="POST" enctype="multipart/form-data">
+        <!-- {{ csrf_field() }} -->
+        @csrf
     <div class="row">
         <div class="col-md-7">
             <div class="card">
@@ -56,6 +57,7 @@ CHECKOUT
                             <label for="">Pin Code</label>
                             <input type="text" class="form-control" value="{{ Auth::user() -> pincode }}" name="pincode" placeholder="Enter Pin Code">
                         </div>
+                      
 
 
                     </div>

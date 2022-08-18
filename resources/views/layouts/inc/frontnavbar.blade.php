@@ -36,6 +36,11 @@
             {{ Auth::user() -> name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+              <a href="#" class="dropdown-item">
+                My Orders
+              </a>
+            </li>
             <li>
               <a href="#" class="dropdown-item">
                 My Profile

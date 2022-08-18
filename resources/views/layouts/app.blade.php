@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!-- Font awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +48,19 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 E-Shop
             </a>
+
+            <!-- SEARCH -->
+            <form action="{{ url('searchproduct') }}" method="POST">
+                @csrf
+                <div class="search-bar">
+                    <div class="input-group">
+                        <button class="input-group-text" type="submit"><i class="fa fa-search"></i></button>
+                        <input type="search" id="search_product" name="product_name" class="form-control" placeholder="Search for.." aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </form>
+            <!-- SEARCH -->
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,7 +75,16 @@
                         <a class="nav-link" href="{{ url('category') }}">Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('cart') }}">Cart</a>
+                        <a class="nav-link" href="{{ url('cart') }}">Cart
+                        <span class="badge badge-pill bg-primary cart-count">0</span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('wishlist') }}">Wishlist
+                        <span class="badge badge-pill bg-success wishlist-count">0</span>
+                        </a>
+                        
                     </li>
 
                     @guest
@@ -82,6 +105,12 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ url('myorders') }}">
+                                    My Orders
+                                </a>
+
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="#">
                                     My Profile
@@ -120,6 +149,24 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script>
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function(response) {
+                // console.log(response);
+                startAutoComplete(response);
+            }
+        });
+
+        function startAutoComplete(availableTags) {
+            $("#search_product").autocomplete({
+                source: availableTags
+            });
+        }
+    </script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     @if(session('status'))
     <script>

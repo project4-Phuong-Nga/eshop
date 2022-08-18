@@ -14,8 +14,8 @@ WELCOME TO E-SHOP
             <div class="owl-carousel featured-carousel owl-theme">
                 @foreach ($featured_products as $prod)
                 <div class="item">
-                    <div class="card">
-                        <img src="{{ asset('assets/uploads/products/'.$prod -> image) }}" alt="Product Image">
+                    <div class="card" style="margin: 20px; height: 400px;">
+                        <img style="height: 200px; padding: 20px;" src="{{ asset('assets/uploads/products/'.$prod -> image) }}" alt="Product Image">
                         <div class="card-body">
                             <h5>{{ $prod -> name }}</h5>
                             <span class="float-start">{{ $prod -> selling_price }}</span>
@@ -38,8 +38,8 @@ WELCOME TO E-SHOP
                 @foreach ($trending_category as $tcategory)
                 <div class="item">
                     <a href="{{ url('category/'.$tcategory->slug) }}">
-                    <div class="card">
-                        <img src="{{ asset('assets/uploads/category/'.$tcategory -> image) }}" alt="Category Image">
+                    <div class="card" style="margin: 20px; height: 400px;">
+                        <img style="height: 200px; padding: 20px;" src="{{ asset('assets/uploads/category/'.$tcategory -> image) }}" alt="Category Image">
                         <div class="card-body">
                             <h5>{{ $tcategory -> name }}</h5>
                             <p>{{ $tcategory -> description}}</p>

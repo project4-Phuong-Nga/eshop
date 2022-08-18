@@ -6,7 +6,7 @@
         <h4>Edit/Update Category</h4>
     </div>
     <div class="card-body">
-        <form action="{{ url('update-category/'.$category -> id) }}" method="POST">
+        <form action="{{ url('update-category/'.$category -> id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">

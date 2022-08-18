@@ -43,9 +43,10 @@ class CheckoutController extends Controller
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
         $order->tracking_no = 'sharma' . rand(1111, 9999);
+
         $order->save();
 
-        $order->id;
+        // $order->id;
 
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
@@ -74,6 +75,7 @@ class CheckoutController extends Controller
             $user->state = $request->input('state');
             $user->country = $request->input('country');
             $user->pincode = $request->input('pincode');
+
             $user->update();
         }
 

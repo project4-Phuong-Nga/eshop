@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.app')
 
 @section('title')
 {{ $category -> name }}
@@ -7,7 +7,17 @@
 @section('content')
 <div class="py-3 mb-4 shadow-sm bg-warning border-top">
     <div class="container">
-        <h6 class="mb-0">Collections / {{ $category -> name }}</h6>
+        <h6 class="mb-0">
+            <a href="{{ url('/') }}">
+                Home
+            </a> /
+            <a href="{{ url('category') }}">
+                Category
+            </a>/
+            <a href="{{ url('category/'.$category->slug) }}">
+            {{ $category -> name }}
+            </a>
+        </h6>
     </div>
 </div>
 
@@ -18,10 +28,10 @@
             <div class="owl-carousel featured-carousel owl-theme">
             @foreach ($products as $prod)
             <div class="item">
-                <div class="card">
+                <div class="card" style="margin: 20px; height: 400px;">
                     <a href="{{ url('category/'.$category -> slug.'/'.$prod -> slug) }}">
-                        <img src="{{ asset('assets/uploads/products/'.$prod -> image) }}" alt="Product Image">
-                        <div class="card-body">
+                        <img style="height: 200px; padding: 20px;" src="{{ asset('assets/uploads/products/'.$prod -> image) }}" alt="Product Image">
+                        <div class="card-body" >
                             <h5>{{ $prod -> name }}</h5>
                             <span class="float-start">{{ $prod -> selling_price }}</span>
                             <span class="float-end"><s>{{ $prod -> original_price }}</s></span>
