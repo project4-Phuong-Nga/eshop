@@ -6,32 +6,33 @@
         <h4>Add Category</h4>
     </div>
     <div class="card-body">
-        <form action="{{ url('insert-category') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('insert-orders') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="">Name</label>
-                    <input onchange="generateSlug(this.value)" type="text" class="form-control" name="name">
+                    <label for="">First Name</label>
+                    <input type="text" id="slug" class="form-control" name="fname">
+
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Slug</label>
-                    <input type="text" id="slug" class="form-control" name="slug">
+                    <label for="">Last Name</label>
+                    <input type="text" id="slug" class="form-control" name="lname">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="">Description</label>
-                    <textarea name="description" rows="3" class="form-control"></textarea>
+                    <label for="">Email</label>
+                    <input type="text" id="slug" class="form-control" name="email">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Status</label>
-                    <input type="checkbox" name="status">
+                    <label for="">Phone</label>
+                    <input type="text" id="slug" class="form-control" name="email">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Popular</label>
-                    <input type="checkbox" name="popular">
+                    <label for="">Address 1</label>
+                    <input type="text" id="slug" class="form-control" name="email">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="">Meta Title</label>
-                    <textarea type="text" name="meta_title" class="form-control"></textarea>
+                    <label for="">Address 2</label>
+                    <input type="text" id="slug" class="form-control" name="email">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Meta Keywords</label>

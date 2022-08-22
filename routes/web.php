@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,11 @@ Route::middleware(['auth']) -> group(function () {
 
     Route::post('add-rating', [RatingController::class, 'add']);
 
+    Route::get('add-review/{product_slug}/userreview', [ReviewController::class, 'add']);
+    Route::post('add-review', [ReviewController::class, 'create']);
+    Route::get('edit-review/{product_slug}/userreview', [ReviewController::class, 'edit']);
+    Route::put('update-review', [ReviewController::class, 'update']);
+
     Route::get('wishlist', [WishlistController::class, 'index']);
 
 });
@@ -81,6 +87,8 @@ Route::middleware( ['auth', 'isAdmin']) ->group(function() {
     Route::get('delete-product/{id}', [ProductController::class, 'destroy']);
 
     Route::get('orders', [OrderController::class, 'index']);
+    Route::get('add-orders', [OrderController::class, 'add']);
+    Route::post('insert-orders', [OrderController::class, 'insert']);
     Route::get('view-order/{id}', [OrderController::class, 'view']);
     Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
     Route::get('order-history', [OrderController::class, 'orderhistory']);

@@ -8,16 +8,15 @@
 
     <div class="card-body">
         <table class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center;">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center;">
                 @foreach($users as $item)
                 <tr>
                     <td>{{ $item -> id }}</td>

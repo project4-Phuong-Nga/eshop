@@ -19,11 +19,11 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" name="name" value="{{ $products -> name }}">
+                    <input onchange="generateSlug(this.value)" type="text" class="form-control" name="name" value="{{ $products -> name }}">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Slug</label>
-                    <input type="text" class="form-control" name="slug" value="{{ $products -> slug }}">
+                    <input id="slug" type="text" class="form-control" name="slug" value="{{ $products -> slug }}">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Small description</label>
@@ -85,4 +85,28 @@
         </form>
     </div>
 </div>
+<script>
+    var slugGen = function(str) {
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+
+        // remove accents, swap ñ for n, etc
+        var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+        var to = "aaaaaeeeeeiiiiooooouuuunc------";
+        for (var i = 0, l = from.length; i < l; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+        return str;
+    };
+
+    function generateSlug(val) {
+        document.getElementById('slug').value = slugGen(val)
+    }
+</script>
+
 @endsection

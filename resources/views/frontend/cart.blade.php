@@ -42,9 +42,9 @@ MY CART
                     @if($item -> products -> qty >= $item->prod_qty)
                         <label for="Quantity">Quantity</label>
                         <div class="input-group text-center mb-3" style="width: 130px;">
-                            <button class="input-group-text changeQuantity decrement-btn">-</button>
-                            <input type="text" name="quantity" class="form-control qty-input text-center" value="{{ $item->prod_qty }}" />
-                            <button class="input-group-text changeQuantity increment-btn">+</button>
+                            <button type="button" class="input-group-text decrement-btn">-</button>
+                            <input type="text" name="quantity" class="input-quantity-cart form-control qty-input text-center" value="{{ $item->prod_qty }}" />
+                            <button type="button" class="input-group-text increment-btn">+</button>
                         </div>
                     @php
                     $total += $item-> products->selling_price * $item->prod_qty ;

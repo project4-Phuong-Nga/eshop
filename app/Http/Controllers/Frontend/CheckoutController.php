@@ -24,7 +24,7 @@ class CheckoutController extends Controller
         }
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
-
+        // check neu k co sp nao thi bao loi
         return view('frontend.checkout', compact('cartitems'));
     }
 
@@ -43,21 +43,15 @@ class CheckoutController extends Controller
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
         $order->tracking_no = 'sharma' . rand(1111, 9999);
-
         $order->save();
-
-        // $order->id;
-
-
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
-            OrderItem::created([
-                'order_id' => $order->id,
-                'prod_id' => $item->prod_id,
-                'qty' => $item->prod_qty,
-                'price' => $item->products->selling_price,
-            ]);
-
+            $od_item = new OrderItem();
+            $od_item->order_id = $order->id;
+            $od_item->prod_id = $item->prod_id;
+            $od_item->qty = $item->prod_qty;
+            $od_item->price = $item->products->selling_price;
+            $od_item->save();
             $prod = Product::where('id', $item->prod_id)-> first();
             $prod -> qty = $prod -> qty - $item -> prod_qty;
             $prod -> update();

@@ -134,25 +134,57 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-12">
+                <div class="col-md-12">
+                    <hr>
+                    <h3>Description</h3>
+                    <p class="mt-3">
+                        {!! $products-> description !!}
+                    </p>
+                </div>
                 <hr>
-                <h3>Description</h3>
-                <p class="mt-3">
-                    {!! $products-> description !!}
-                </p>
-
-
             </div>
 
-            <hr>
-            <div class="col-md-12">
+            <div class="row">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Rate this product
                     <i class="fa fa-star"></i>
                 </button>
+                <a href="{{ 'add-review/'.$products-> slug.'/userreview' }}" class="btn btn-outline-dark">
+                    Write a review
+                    <i class="fa fa-star"></i>
+                </a>
+            </div>
+
+            <div class="col-md-8">
+                @foreach ( $reviews as $item )
+                <div class="user-review">
+
+                    <label for="">{{ $item -> user -> name .''.$item->user->lname }}</label>
+                    @if($item -> user_id == Auth::id())
+                    <a href="{{ url('edit-review/'.$products->slug.'/userreview') }}">edit</a>
+                    @endif
+                    <br>
+
+                    @php
+                        $rating = App\Models\Rating::where('prod_id', $products->id) -> where('user_id', $item->user->id)-> first();
+                    @endphp
+
+                    @if($rating)
+                    @php $user_rated = $rating -> stars_rated @endphp
+                    @for($i = 1; $i <= $user_rated; $i++) <i class="fa fa-star checked"></i>
+                        @endfor
+                        @for($j = $user_rated + 1; $j <= 5; $j++) <i class="fa fa-star"></i>
+                            @endfor
+                    @endif
+                    <small>Reviewed on {{ $item-> created_at -> format('d M Y') }}</small>
+                    <p>
+                        {{ $item -> user_review }}
+                    </p>
+                </div>
+
+                @endforeach
+
             </div>
         </div>
     </div>
