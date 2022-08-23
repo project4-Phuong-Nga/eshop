@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -38,5 +39,11 @@ class OrderController extends Controller
         $orders = Order::where('status', '1')->get();
         $cartitems = Cart::all();
         return view('admin.orders.history', compact('orders', 'cartitems'));
+    }
+    public function destroy($id){
+        $orders = Order::find($id);
+        $orders->status = 1;
+        $orders->update();
+        return redirect('orders') -> with('status', "Cancel Successfully");
     }
 }

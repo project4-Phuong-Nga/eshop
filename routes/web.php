@@ -52,6 +52,7 @@ Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
 
 Route::middleware(['auth']) -> group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
+    Route::get('destroy-order/{id}', [CartController::class, 'remove']);
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::post('place-order', [CheckoutController::class, 'placeorder']);
 
@@ -92,6 +93,8 @@ Route::middleware( ['auth', 'isAdmin']) ->group(function() {
     Route::get('view-order/{id}', [OrderController::class, 'view']);
     Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
     Route::get('order-history', [OrderController::class, 'orderhistory']);
+    Route::get('destroy/{id}', [ProductController::class, 'destroy']);
+
 
     Route::get('users', [DashboardController::class, 'users']);
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser']);
