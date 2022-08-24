@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h4>Add Category</h4>
+        <h4>Add Orders</h4>
     </div>
     <div class="card-body">
         <form action="{{ url('insert-orders') }}" method="POST" enctype="multipart/form-data">
@@ -24,28 +24,44 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Phone</label>
-                    <input type="text" id="slug" class="form-control" name="email">
+                    <input type="text" id="slug" class="form-control" name="phone">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Address 1</label>
-                    <input type="text" id="slug" class="form-control" name="email">
+                    <input type="text" id="slug" class="form-control" name="address1">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Address 2</label>
-                    <input type="text" id="slug" class="form-control" name="email">
+                    <input type="text" id="slug" class="form-control" name="address2">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="">Meta Keywords</label>
-                    <textarea name="meta_keywords" rows="3" class="form-control"></textarea>
+                    <label for="">City</label>
+                    <input type="text" id="slug" class="form-control" name="city">
                 </div>
 
                 <div class="col-md-12 mb-3">
-                    <label for="">Meta Description</label>
-                    <textarea name="meta_description" rows="3" class="form-control"></textarea>
+                    <label for="">State</label>
+                    <input type="text" id="slug" class="form-control" name="state">
                 </div>
-                <div class="col-md-12">
-                    <label for="">Image</label>
-                    <input type="file" name="image" class="form-control">
+                <div class="col-md-12 mb-3">
+                    <label for="">Country</label>
+                    <input type="text" id="slug" class="form-control" name="country">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">Pincode</label>
+                    <input type="text" id="slug" class="form-control" name="pincode">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">Status</label>
+                    <input type="text" id="slug" class="form-control" name="status">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">Message</label>
+                    <input type="text" id="slug" class="form-control" name="message">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">Tracking No</label>
+                    <input type="text" id="slug" class="form-control" name="tracking_no">
                 </div>
                 <div class="col-md-12">
                     <button class="btn btn-outline-success" type="submit">Submit</button>

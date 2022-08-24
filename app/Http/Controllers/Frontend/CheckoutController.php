@@ -42,7 +42,8 @@ class CheckoutController extends Controller
         $order->state = $request->input('state');
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
-        $order->tracking_no = 'sharma' . rand(1111, 9999);
+        $order->tracking_no = 'ecomerce' . rand(1111, 9999);
+        // $order->total_proce = $request->
         $order->save();
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {

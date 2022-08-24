@@ -19,7 +19,7 @@ MY ORDERS
                         <thead>
                             <tr style="text-align: center;">
                                 <th>Tracking Number</th>
-                                <th>Total Price</th>
+                                <th>Ordered Date & Time</th>
                                 <th>Status</th>
                                 <th  colspan="2">Action</th>
                             </tr>
@@ -29,9 +29,7 @@ MY ORDERS
 
                             <tr style="text-align: center;">
                                 <td>{{ $item -> tracking_no}}</td>
-                                @foreach ($cartitems as $item)
-                                <td>{{ $item->products->selling_price }}</td>
-                                @endforeach
+                                <td>{{ $item -> created_at }}</td>
                                 <td>{{ $item -> status == '0' ? 'pending' : 'completed' }}</td>
                                 <td>
                                     <a href="{{ url('vieworder/'.$item->id) }}" class="btn btn-warning">View</a>

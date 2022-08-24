@@ -25,6 +25,32 @@ class OrderController extends Controller
         return view('admin.orders.view', compact('cartitems','orders'));
     }
 
+    public function add()
+    {
+        $orders = Order::all();
+        return view('admin.orders.add', compact('orders'));
+    }
+
+    public function insert(Request $request)
+    {
+        $orders = new Order();
+        $orders -> fname = $request -> input('fname');
+        $orders -> lname = $request -> input('lname');
+        $orders -> email = $request -> input('email');
+        $orders -> phone = $request -> input('phone');
+        $orders -> address1 = $request -> input('address1');
+        $orders -> address2 = $request -> input('address2');
+        $orders -> city = $request -> input('city');
+        $orders -> state = $request -> input('state');
+        $orders -> country = $request -> input('country');
+        $orders -> pincode = $request -> input('pincode');
+        $orders -> status = $request -> input('status');
+        $orders -> message = $request -> input('message');
+        $orders -> tracking_no = $request -> input('tracking_no');
+
+
+    }
+
     public function updateorder(Request $request, $id)
     {
         $orders = Order::find($id);

@@ -17,9 +17,10 @@ MY ORDERS
 
                 <div class="card-body">
                     <div class="row">
-                        <h4>Shipping Details</h4>
-                        <hr>
+
                         <div class="col-md-6 order-details">
+                            <h4>Shipping Details</h4>
+                            <hr>
                             <label for="">First Name</label>
                             <div class="border p-2">{{ $orders -> fname }}</div>
                             <label for="">Last Name</label>
@@ -42,6 +43,9 @@ MY ORDERS
                         <div class="col-md-6">
                             <h4>Order Details</h4>
                             <hr>
+                            <!-- @php
+                            $total = 0;
+                            @endphp -->
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -57,7 +61,7 @@ MY ORDERS
                                     <tr>
                                         <td>{{ $item -> products -> name}}</td>
 
-                                        <td>{{ $item->prod_qty }}</td>
+                                        <td>{{ $item->qty }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>
                                             <img src="{{ asset('assets/uploads/products/'.$item->products->image ) }}" width="100px" alt="Product Image">
@@ -67,7 +71,14 @@ MY ORDERS
 
                                 </tbody>
                             </table>
-                            <h4 class="px-2">Grand Total: <span class="float-end">{{ $orders -> total_price }} </span></h4>
+                            <!-- <h4 class="px-2">Grand Total:
+                                <span class="float-end">
+                                    {{ $orders -> total_price }} 
+                                    @php
+                                    $total += $item-> price * $item->qty ;
+                                    @endphp
+                                </span>
+                            </h4> -->
                         </div>
                     </div>
 
