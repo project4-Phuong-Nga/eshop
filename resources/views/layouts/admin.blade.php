@@ -61,7 +61,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Chart js -->
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 
     @if(session('status'))
     <script>
@@ -72,10 +72,10 @@
     <!-- Scripts -->
 
     @yield('scripts')
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 </body>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript">
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript"> -->
     var count = <?php echo json_encode($orderData)?>;
     Highcharts.chart('chartContainer', {
         title: {
