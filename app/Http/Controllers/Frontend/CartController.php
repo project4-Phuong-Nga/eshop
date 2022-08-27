@@ -21,7 +21,10 @@ class CartController extends Controller
 
             if ($prod_check) {
                 if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {
-                    return response()->json(['status' => $prod_check->name . "Already added to cart"]);
+                   $cart = Cart::where('prod_id', $product_id)->first();
+                   $cart->prod_qty += $product_qty;
+                   $cart->update();
+                   return response()->json(['status' => "Product Added To Cart Successfully"]);
                 } else {
                     $cardItem = new Cart();
                     $cardItem->prod_id = $product_id;
