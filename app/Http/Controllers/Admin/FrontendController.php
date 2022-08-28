@@ -15,7 +15,7 @@ class FrontendController extends Controller
     public function index()
     {
         $users = User::where('role_as', '0')->count();
-        $orders = Order::count();
+        $orders = Order::where('status', 'pending')->count();
         $categories = Category::count();
         $products = Product::count();
 

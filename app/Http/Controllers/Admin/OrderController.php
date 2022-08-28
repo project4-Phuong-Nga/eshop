@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('status', '0')->get();
+        $orders = Order::where('status', '0') -> orwhere('status', '1') -> orwhere('status', '2') ->get();
         $cartitems = Cart::all();
         return view('admin.orders.index', compact('orders', 'cartitems'));
     }
@@ -47,7 +47,9 @@ class OrderController extends Controller
         $orders -> status = $request -> input('status');
         $orders -> message = $request -> input('message');
         $orders -> tracking_no = $request -> input('tracking_no');
+        $orders->save();
 
+        return redirect('/dashboard') -> with('status', "Order placed Successfully");
 
     }
 
@@ -61,8 +63,15 @@ class OrderController extends Controller
 
     public function orderhistory()
     {
-        $orders = Order::where('status', '1')->get();
+        $orders = Order::where('status', '3')->get();
         $cartitems = Cart::all();
         return view('admin.orders.history', compact('orders', 'cartitems'));
+    }
+
+    public function ordercanceled()
+    {
+        $orders = Order::where('status', '4')->get();
+        $cartitems = Cart::all();
+        return view('admin.orders.canceled', compact('orders', 'cartitems'));
     }
 }

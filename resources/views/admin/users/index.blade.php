@@ -26,9 +26,9 @@
                     @endforeach -->
                     </td>
                     <td>{{ $item -> email }}</td>
-                    @foreach($orders as $order)
+                    <!-- @foreach($orders as $order)
                     <td>{{ $order -> phone }}</td>
-                    @endforeach
+                    @endforeach -->
                     <td>
                         <a href="{{ url('view-user/'.$item -> id) }}" class="btn btn-warning">View</a>
                     </td>

@@ -21,7 +21,7 @@ MY ORDERS
                                 <th>Tracking Number</th>
                                 <th>Ordered Date & Time</th>
                                 <th>Status</th>
-                                <th  colspan="2">Action</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,12 +30,30 @@ MY ORDERS
                             <tr style="text-align: center;">
                                 <td>{{ $item -> tracking_no}}</td>
                                 <td>{{ $item -> created_at }}</td>
-                                <td>{{ $item -> status == '0' ? 'pending' : 'completed' }}</td>
+                                <td>
+                                    <!-- {{ $item -> status == '0' ? 'pending' : 'completed' }} -->
+                                    @if ($item -> status == '0')
+                                    Waiting payment
+                                    @elseif ($item -> status == '1')
+                                    Paymented
+                                    @elseif ($item -> status == '2')
+                                    Delivering
+                                    @elseif ($item -> status == '3')
+                                    Completed
+                                    @elseif ($item -> status == '4')
+                                    Cancel
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ url('vieworder/'.$item->id) }}" class="btn btn-warning">View</a>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-danger">Destroy</a>
+                                    <!-- <a href="{{ url('destroy/'.$item->id) }}" class="btn btn-danger">Destroy</a> -->
+                                    <form action="{{ url('destroy/'.$item -> id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-danger">Destroy</button>
+                                    </form>
 
                                 </td>
 

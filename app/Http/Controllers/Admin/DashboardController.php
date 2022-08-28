@@ -26,4 +26,6 @@ class DashboardController extends Controller
 
         return view('admin.users.view', compact('users', 'orders'));
     }
+
+   
 }

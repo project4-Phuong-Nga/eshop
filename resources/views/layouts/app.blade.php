@@ -55,7 +55,7 @@
                 <div class="search-bar">
                     <div class="input-group">
                         <button class="input-group-text" type="submit"><i class="fa fa-search"></i></button>
-                        <input type="search" id="search_product" name="product_name" class="form-control" placeholder="Search for.." aria-label="Username" aria-describedby="basic-addon1">
+                        <input style="width: 100px;" type="search" id="search_product" name="product_name" class="form-control" placeholder="Search for.." aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
             </form>
@@ -139,12 +139,13 @@
         @yield('content')
     </main>
     <!-- </div> -->
-
+    @extends('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/checkout.js') }}"></script>
 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -180,3 +181,4 @@
 </body>
 
 </html>
+

@@ -57,6 +57,7 @@ Route::middleware(['auth']) -> group(function () {
 
     Route::get('myorders', [UserController::class, 'index']);
     Route::get('vieworder/{id}', [UserController::class, 'view']);
+    Route::put('destroy/{id}', [UserController::class, 'destroy']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
 
@@ -92,8 +93,8 @@ Route::middleware( ['auth', 'isAdmin']) ->group(function() {
     Route::get('view-order/{id}', [OrderController::class, 'view']);
     Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
     Route::get('order-history', [OrderController::class, 'orderhistory']);
+    Route::get('order-canceled', [OrderController::class, 'ordercanceled']);
 
     Route::get('users', [DashboardController::class, 'users']);
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser']);
-
 });

@@ -24,4 +24,12 @@ class UserController extends Controller
         $cartitems = OrderItem::where('order_id', $id)->get();
         return view('frontend.orders.view', compact('orders', 'cartitems'));
     }
+
+    public function destroy(Request $request, $id) 
+    {
+        $orders = Order::find($id);
+        $orders -> status = 4;
+        $orders -> update();
+        return redirect() -> back() -> with('status', "Order Cancel Successfully");
+    }
 }

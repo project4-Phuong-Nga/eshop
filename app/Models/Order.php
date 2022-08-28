@@ -27,6 +27,7 @@ class Order extends Model
         'pincode',
         'status',
         'message',
+        'total_price',
         'tracking_no',
     ];
 

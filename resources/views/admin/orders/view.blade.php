@@ -75,9 +75,17 @@ MY ORDERS
                             <form action="{{ url('update-order/'.$orders->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
+                                
                             <select name="order_status" class="form-select">
-                                <option {{ $orders -> status == '0'? 'selected':''}} value="0">Pending</option>
-                                <option {{ $orders -> status == '1'? 'selected':''}} value="1">Completed</option>
+                            @if ($orders -> status == '4')
+                                    <option {{ $orders -> status == '4'}} value="4">Canceled</option>
+                                @else
+                                <option {{ $orders -> status == '0'? 'selected':''}} value="0">Waiting Payment</option>
+                                <option {{ $orders -> status == '1'? 'selected':''}} value="1">Paymented</option>
+                                <option {{ $orders -> status == '2'? 'selected':''}} value="2">Delivering</option>
+                                <option {{ $orders -> status == '3'? 'selected':''}} value="3">Completed</option>
+                            @endif
+                                
                             </select>
                             <button type="submit" class="btn btn-success float-end mt-3">Update</button>
                             </form>

@@ -48,13 +48,6 @@
             </a>
           </li>
 
-          <li class="nav-item {{ Request::is('add-orders') ? 'active':'' }}">
-            <a class="nav-link" href="{{ url('add-orders') }}">
-              <i class="material-icons">content_paste</i>
-              <p>Add Orders</p>
-            </a>
-          </li>
-
           <li class="nav-item {{ Request::is('users') ? 'active':'' }}">
             <a class="nav-link" href="{{ url('users') }}">
               <i class="material-icons">person</i>

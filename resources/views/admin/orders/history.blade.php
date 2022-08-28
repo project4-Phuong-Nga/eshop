@@ -10,12 +10,7 @@ Orders
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>Order History
-                            <a href="{{ 'orders' }}" class="btn btn-warning float-end">New Order</a>
-                        </h4>
-                    </div>
-
+                    
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
@@ -36,9 +31,19 @@ Orders
                                     </td>
                                     <td>{{ $item -> tracking_no}}</td>
                                     <td>{{ $item-> price }}</td>
-                                    <td>{{ $item -> status == '0' ?'pending' : 'completed' }}</td>
                                     <td>
-                                        <a href="{{ url('admin/view-order/'.$item->id) }}" class="btn btn-warning">View</a>
+                                        @if ($item -> status == '0')
+                                            Waiting payment
+                                        @elseif ($item -> status == '1')
+                                            Paymented
+                                        @elseif ($item -> status == '2')
+                                            Delivering
+                                        @elseif ($item -> status == '3')
+                                            Completed
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-warning">View</a>
                                     </td>
 
                                 </tr>
