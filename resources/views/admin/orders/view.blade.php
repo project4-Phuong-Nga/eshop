@@ -57,7 +57,7 @@ MY ORDERS
                                     <tr>
                                         <td>{{ $item -> products -> name}}</td>
 
-                                        <td>{{ $item->qty }}</td>
+                                        <td>{{ $item->qty }}</td> 
                                         <td>{{ $item->price }}</td>
                                         <td>
                                             <img src="{{ asset('assets/uploads/products/'.$item->products->image ) }}" width="100px" alt="Product Image">

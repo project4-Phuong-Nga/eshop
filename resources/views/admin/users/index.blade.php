@@ -32,6 +32,9 @@
                     <td>
                         <a href="{{ url('view-user/'.$item -> id) }}" class="btn btn-warning">View</a>
                     </td>
+                    <td>
+                        <a href="{{ url('/destroy/'.$item -> id) }}">Hủy đơn hàng</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

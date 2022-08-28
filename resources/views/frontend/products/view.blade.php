@@ -96,9 +96,9 @@
                                 @endfor
                                 <span>
                                     @if($ratings -> count() > 0)
-                                    {{ $ratings -> count() }} Ratings
+                                    {{ $ratings -> count() }} Ratings <b>({{$ratenum}})</b>
                                     @else
-                                    No Ratings
+                                    No Ratings <b>(0)</b>
                                     @endif
                                 </span>
 

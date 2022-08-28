@@ -50,8 +50,13 @@ Orders
                                             Canceled
                                         @endif
                                     </td>
+                                    <td>{{ $item -> price }}</td>
+                                    <td>{{ $item -> status == 0 ?'pending' : 'completed' }}</td>
                                     <td>
                                         <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-warning">View</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('destroy/'.$item->id) }}" class="btn btn-warning">Cancel Order</a>
                                     </td>
 
                                 </tr>

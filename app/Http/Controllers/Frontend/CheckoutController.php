@@ -66,23 +66,6 @@ class CheckoutController extends Controller
             $prod -> qty = $prod -> qty - $item -> prod_qty;
             $prod -> update();
         }
-
-        if (Auth::user()->address1 == NULL) 
-        {
-            $user = User::where('id', Auth::id()) -> first();
-            $user->name = $request->input('fname');
-            $user->lname = $request->input('lname');
-            $user->phone = $request->input('phone');
-            $user->address1 = $request->input('address1');
-            $user->address2 = $request->input('address2');
-            $user->city = $request->input('country');
-            $user->state = $request->input('state');
-            $user->country = $request->input('country');
-            $user->pincode = $request->input('pincode');
-
-            $user->update();
-        }
-
         $cartitems = Cart::where('user_id', Auth::id()) -> get();
         Cart::destroy($cartitems);
 
