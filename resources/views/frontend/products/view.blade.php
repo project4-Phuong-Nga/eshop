@@ -150,7 +150,8 @@
                     Rate this product
                     <i class="fa fa-star"></i>
                 </button>
-                <a href="{{ 'add-review/'.$products-> slug.'/userreview' }}" class="btn btn-outline-dark">
+                <br>
+                <a href="{{ url('add-review/'.$products->slug.'/userreview') }}" class="btn btn-outline-dark">
                     Write a review
                     <i class="fa fa-star"></i>
                 </a>
@@ -160,9 +161,9 @@
                 @foreach ( $reviews as $item )
                 <div class="user-review">
 
-                    <label for="">{{ $item -> user -> name .''.$item->user->lname }}</label>
+                    <label for="">{{ $item -> user -> name .' '.$item->user->lname }}</label>
                     @if($item -> user_id == Auth::id())
-                    <a href="{{ url('edit-review/'.$products->slug.'/userreview') }}">edit</a>
+                    <a type="button" class="btn btn-outline-danger" href="{{ url('edit-review/'.$products->slug.'/userreview') }}">edit</a>
                     @endif
                     <br>
 
@@ -177,6 +178,7 @@
                         @for($j = $user_rated + 1; $j <= 5; $j++) <i class="fa fa-star"></i>
                             @endfor
                     @endif
+                    <br>
                     <small>Reviewed on {{ $item-> created_at -> format('d M Y') }}</small>
                     <p>
                         {{ $item -> user_review }}

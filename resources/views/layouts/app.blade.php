@@ -15,11 +15,11 @@
     <!-- Styles -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/payment.css') }}" rel="stylesheet">
 
     <!-- Owl Carousel -->
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
-
 
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -27,9 +27,9 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!-- Font awesome -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <style>
         a {
@@ -76,15 +76,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('cart') }}">Cart
-                        <span class="badge badge-pill bg-primary cart-count">0</span>
+                            <span class="badge badge-pill bg-primary cart-count">0</span>
                         </a>
-                        
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('wishlist') }}">Wishlist
-                        <span class="badge badge-pill bg-success wishlist-count">0</span>
+                            <span class="badge badge-pill bg-success wishlist-count">0</span>
                         </a>
-                        
+
                     </li>
 
                     @guest
@@ -181,4 +181,3 @@
 </body>
 
 </html>
-

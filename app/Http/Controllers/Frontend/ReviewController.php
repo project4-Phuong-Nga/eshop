@@ -18,17 +18,17 @@ class ReviewController extends Controller
         if ($product) {
             $product_id = $product -> id;
             $review = Review::where('user_id', Auth::id()) -> where('prod_id', $product_id)->first();
-            if($review)
-            {
-                return view('frontend.reviews.edit', compact('review'));
-            }
-            else
-            {
+            // if($review)
+            // {
+            //     return view('frontend.reviews.edit', compact('review'));
+            // }
+            // else
+            // {
                 $verified_purchase = Order::where('orders.user_id', Auth::id())
                 ->join('order_items', 'orders.id', 'order_id')
                 ->where('order_items.prod_id', $product_id)->get();
             return view('frontend.reviews.index', compact('product', 'verified_purchase'));
-            }
+            // }
         }
         else
         {

@@ -74,10 +74,5 @@ class OrderController extends Controller
         $orders = Order::where('status', '4')->get();
         $cartitems = Cart::all();
         return view('admin.orders.canceled', compact('orders', 'cartitems'));
-    public function destroy($id){
-        $orders = Order::find($id);
-        $orders->status = 1;
-        $orders->update();
-        return redirect('orders') -> with('status', "Cancel Successfully");
     }
 }

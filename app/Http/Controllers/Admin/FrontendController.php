@@ -8,16 +8,12 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-// =======
-use App\Models\Order;
-// >>>>>>> ce773b7803b38e8d84fe64003221f43792217ce6
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
     public function index()
-// <<<<<<< HEAD
     {
         $users = User::where('role_as', '0')->count();
         $orders = Order::where('status', 'pending')->count();
@@ -33,7 +29,6 @@ class FrontendController extends Controller
         $get_products = Product::all() ;
 
         return view('admin.index', compact('users', 'orders','categories', 'products', 'orderData', 'get_products'));
-// =======
     {   
         $product = DB::table('products')->count();
         $categorie = DB::table('categories')->count();
