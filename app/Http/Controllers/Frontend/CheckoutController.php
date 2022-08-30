@@ -22,9 +22,7 @@ class CheckoutController extends Controller
                 $removeItem->delete();
             }
         }
-
         $cartitems = Cart::where('user_id', Auth::id())->get();
-        // check neu k co sp nao thi bao loi
         return view('frontend.checkout', compact('cartitems'));
     }
 
@@ -42,8 +40,7 @@ class CheckoutController extends Controller
         $order->state = $request->input('state');
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
-        
-        // to calculate the total price
+        $order->payment_method = $request->input('payment_method') == '0' ? 0 : 1;
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id()) -> get();
         foreach($cartitems_total as $prod)

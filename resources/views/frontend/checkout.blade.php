@@ -67,9 +67,21 @@ CHECKOUT
                                 <input type="text" class="form-control pincode" value="{{ Auth::user() -> pincode }}" name="pincode" placeholder="Enter Pin Code">
                                 <span id="pincode_error" class="text-danger"></span>
                             </div>
-
-
-
+                            <div class="col-md-6 mt-3">
+                                <label for="">Payment method</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault1" checked value="0">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Cash on delivery
+                                    </label>
+                                  </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="1">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Payment online
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,49 +131,10 @@ CHECKOUT
                                     <h3>Total price: {{ $total }}</h3>
                                     <br>
                                     
-                    <button type="submit" class="btn btn-warning w-100 float-end">Cash on delivery</button>
-                    <!-- <br>
-                    <a href="{{ url('/vnpay_payment') }}" type="button" class="btn btn-warning w-100 float-end">Pay now </a> -->
+                    <button type="submit" class="btn btn-warning w-100 float-end">Order now</button>
                     <br>
-
-                    <!-- paying by card -->
-                    <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-rocket"></i> Pay Now
+                    <button type="button" class="btn btn-primary launch" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <i class="fa fa-rocket"></i> Pay Now
                     </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
-                                    <div class="tabs ">
-                                        <div class="text-center">
-                                            <h5>QR Code</h5>
-                                        </div>
-                                        <img src="{{ asset('assets/images/qr_code.png') }}" height="90px" width="90px" style="margin-left: 40%; ">
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
-                                                <div class="mt-4 mx-4">
-                                                    <div class="text-center">
-                                                        <h5>Credit card</h5>
-                                                    </div>
-                                                    <div class="form mt-3">
-                                                        <div class="inputbox"> Bank: TP Bank</div>
-                                                        <div class="inputbox"> Card Number: 123456789 </div>
-                                                        <div class="d-flex flex-row">
-                                                            <div class="inputbox"> <input type="number" name="name" class="form-control" required="required" value="{{ $total }}"> <span>Purchase Total</span> </div>
-                                                        </div>
-                                                        <p style="text-align: center; color: red;">!Please check your informations carefully before buying</p>
-                                                        <div class="px-5 pay"> <button type="submit" class="btn btn-success btn-block ">Buy</button> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     @else
                     <h4 class="text-center">No products in cart</h4>
                     @endif
